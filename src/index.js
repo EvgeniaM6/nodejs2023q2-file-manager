@@ -9,7 +9,8 @@ import {
   moveFile,
   removeFile,
   executeOsOperation,
-  printFileHash
+  printFileHash,
+  compressFile
 } from './operations/index.js';
 
 let userName;
@@ -50,18 +51,21 @@ stdin.on('data', (data) => {
     case 'add':
       addNewFile(argsArr[0]);
       break;
-    case 'rn':
+    case 'rn': {
       const [path, newFileName] = argsArr;
       renameFile(path, newFileName);
       break;
-    case 'cp':
+    }
+    case 'cp': {
       const [oldPath, newPath] = argsArr;
       copyFile(oldPath, newPath);
       break;
-    case '.mv':
+    }
+    case '.mv': {
       const [filePath, newDirPath] = argsArr;
       moveFile(filePath, newDirPath);
       break;
+    }
     case 'rm':
       removeFile(argsArr[0]);
       break;
@@ -71,6 +75,16 @@ stdin.on('data', (data) => {
     case 'hash':
       printFileHash(argsArr[0]);
       break;
+    case 'compress': {
+      const [filePath, destinationPath] = argsArr;
+      compressFile(filePath, destinationPath);
+      break;
+    }
+    case 'decompress': {
+      const [filePath, destinationPath] = argsArr;
+      compressFile(filePath, destinationPath, true);
+      break;
+    }
   
     default:
       stdout.write(`Invalid input\n`);
