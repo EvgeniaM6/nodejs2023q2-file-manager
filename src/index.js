@@ -7,7 +7,8 @@ import {
   renameFile,
   copyFile,
   moveFile,
-  removeFile
+  removeFile,
+  executeOsOperation
 } from './operations/index.js';
 
 let userName;
@@ -62,6 +63,9 @@ stdin.on('data', (data) => {
       break;
     case 'rm':
       removeFile(argsArr[0]);
+      break;
+    case 'os':
+      executeOsOperation(argsArr[0]);
       break;
   
     default:
