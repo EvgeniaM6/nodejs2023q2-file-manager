@@ -1,4 +1,5 @@
-import process, { argv, stdin, stdout, exit, cwd } from 'node:process';
+import process, { argv, stdin, stdout, exit, cwd, chdir } from 'node:process';
+import { homedir } from 'node:os';
 import {
   changeDir,
   printList,
@@ -25,6 +26,7 @@ argv.slice(2).forEach((arg) => {
   }
 })
 
+chdir(homedir());
 stdout.write(`Welcome to the File Manager, ${userName}!\n`);
 showCurrentDir();
 
