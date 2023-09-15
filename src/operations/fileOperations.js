@@ -34,7 +34,7 @@ export function renameFile(path, newFileName = '') {
     stdout.write('Operation failed\n');
     return;
   }
-  const i = path.lastIndexOf('/') + 1 || path.lastIndexOf('\\');
+  const i = path.lastIndexOf('/') + 1 || path.lastIndexOf('\\') + 1;
   const part = path.slice(0, i);
   const newFilePath = join(part, newFileName);
   rename(path, newFilePath, handleErr);
@@ -45,8 +45,8 @@ export function copyFile(oldPath, newDirPath) {
     stdout.write('Operation failed\n');
     return;
   }
-  const i = oldPath.lastIndexOf('/') + 1 || oldPath.lastIndexOf('\\');
-  const fileName = oldPath.slice(i + 1);
+  const i = oldPath.lastIndexOf('/') + 1 || oldPath.lastIndexOf('\\') + 1;
+  const fileName = oldPath.slice(i);
   const newFilePath = join(newDirPath, fileName);
 
   const readStream = createReadStream(oldPath);
