@@ -2,10 +2,8 @@ import { chdir, stdout, cwd } from 'node:process';
 import { readdir } from 'node:fs';
 
 export function changeDir(path = '..') {
-  console.log('path=', path);
   try {
     chdir(path);
-    
   } catch (error) {
     stdout.write('Operation failed\n');
   }
