@@ -8,7 +8,8 @@ import {
   copyFile,
   moveFile,
   removeFile,
-  executeOsOperation
+  executeOsOperation,
+  printFileHash
 } from './operations/index.js';
 
 let userName;
@@ -66,6 +67,9 @@ stdin.on('data', (data) => {
       break;
     case 'os':
       executeOsOperation(argsArr[0]);
+      break;
+    case 'hash':
+      printFileHash(argsArr[0]);
       break;
   
     default:
