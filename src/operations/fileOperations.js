@@ -9,7 +9,8 @@ function handleErr(err) {
 }
 
 export function readFileContent(path) {
-  const readStream = createReadStream(path, { autoClose: false });
+  const pathWithWhitespaces = path.replace('*', ' ');
+  const readStream = createReadStream(pathWithWhitespaces, { autoClose: false });
 
   let fileContent = '';
   readStream.on('data', (data) => {

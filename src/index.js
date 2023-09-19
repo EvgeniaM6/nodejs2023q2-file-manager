@@ -26,6 +26,10 @@ argv.slice(2).forEach((arg) => {
   }
 })
 
+if (!userName) {
+  userName = 'Username';
+}
+
 chdir(homedir());
 stdout.write(`Welcome to the File Manager, ${userName}!\n`);
 showCurrentDir();
